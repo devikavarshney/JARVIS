@@ -4,6 +4,7 @@ import pyttsx3
 import wikipedia
 import webbrowser
 import os
+import smtplib
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -27,7 +28,12 @@ def wishMe():
     speak('I am jarvis, How can I help you?')
 
 def sendEmail(to,content):
-    
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('devikavarshneywork@gmail.com', 'xxxx')
+    server.sendmail('devikavarshneywork@gmail.com', to, content)
+    server.close()
 
 def takeCommand():
     # takes microphone input and returns output as text
@@ -89,3 +95,10 @@ if __name__ == "__main__":
                 speak('Email has been sent')
             except Exception as e:
                 speak('Sorry email not sent')
+        elif 'how are you' in query:
+            speak('I am fine what about you?')
+        elif 'alexa' in query:
+            speak('whooo is alexa? kon hai alexa batao?')
+        elif 'siri' in query:
+            speak('whooo is siri?')
+
