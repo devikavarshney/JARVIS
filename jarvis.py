@@ -109,4 +109,8 @@ if __name__ == "__main__":
             speak('Yes very very much.')
         elif 'quit' in query:
             exit()
+        elif "i am fine" in query:
+            speak('wow, very good')
+        elif 'thanks' or 'thank you' in query:
+            speak('you are welcome')
 
