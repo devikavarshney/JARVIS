@@ -9,7 +9,7 @@ import smtplib
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 # print(voices)
-engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[1].id)
 
 
 def speak(audio):
@@ -55,7 +55,7 @@ def takeCommand():
 
 if __name__ == "__main__":
     wishMe()
-    if 1:
+    while True:
         query = takeCommand().lower()
 
         if 'wikipedia' in query:
@@ -79,8 +79,8 @@ if __name__ == "__main__":
             # songs= os.listdir(music_dir)
             # print(songs)
             # os.startfile(os.path.join(music_dir,songs[0]))
-        elif "what is the time" in query:
-            strTime = datetime.datetime.now().strftime("%H:%H:%S")
+        elif "the time" in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
             # print("{strTime.hour}")
             speak(f"The time is {strTime}")
         elif "open code" in query:
@@ -95,10 +95,18 @@ if __name__ == "__main__":
                 speak('Email has been sent')
             except Exception as e:
                 speak('Sorry email not sent')
+        elif 'hello' in query:
+            speak('Hy')
         elif 'how are you' in query:
             speak('I am fine what about you?')
         elif 'alexa' in query:
             speak('whooo is alexa? kon hai alexa batao?')
         elif 'siri' in query:
             speak('whooo is siri?')
+        elif 'what\'s up' in query:
+            speak('Nothing much you tell')
+        elif 'love me' in query:
+            speak('Yes very very much.')
+        elif 'quit' in query:
+            exit()
 
